@@ -1,10 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanaQuiz", "src\KanaQuiz\KanaQuiz.csproj", "{A14F4580-9BC8-4920-A0C6-612D22C09CB2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanaQuiz.Tests", "test\KanaQuiz.Tests\KanaQuiz.Tests.csproj", "{1972036E-5516-4E75-AD97-CE124105EB67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanaQuiz.Core", "src\KanaQuiz.Core\KanaQuiz.Core.csproj", "{A26EE80A-C744-4411-9B92-E32920B6020E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanaQuiz.Web", "src\KanaQuiz.Web\KanaQuiz.Web.csproj", "{7505CE36-AB82-42B0-B07D-AEBD2C2979A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,10 +12,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A14F4580-9BC8-4920-A0C6-612D22C09CB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A14F4580-9BC8-4920-A0C6-612D22C09CB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A14F4580-9BC8-4920-A0C6-612D22C09CB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A14F4580-9BC8-4920-A0C6-612D22C09CB2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1972036E-5516-4E75-AD97-CE124105EB67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1972036E-5516-4E75-AD97-CE124105EB67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1972036E-5516-4E75-AD97-CE124105EB67}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -24,5 +20,9 @@ Global
 		{A26EE80A-C744-4411-9B92-E32920B6020E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A26EE80A-C744-4411-9B92-E32920B6020E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A26EE80A-C744-4411-9B92-E32920B6020E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7505CE36-AB82-42B0-B07D-AEBD2C2979A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7505CE36-AB82-42B0-B07D-AEBD2C2979A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7505CE36-AB82-42B0-B07D-AEBD2C2979A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7505CE36-AB82-42B0-B07D-AEBD2C2979A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

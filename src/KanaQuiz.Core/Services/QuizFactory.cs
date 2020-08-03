@@ -5,25 +5,60 @@ using KanaQuiz.Core.Repositories;
 
 namespace KanaQuiz.Core.Services
 {
+    /// <summary>
+    /// A Quiz Factory.
+    /// </summary>
     public class QuizFactory
     {
         private readonly IRepository<Kana> _kanaRepository;
 
         /// <summary>
-        /// Cttor
+        /// Constructor
         /// </summary>
         /// <param name="kanaRepository"></param>
         public QuizFactory(IRepository<Kana> kanaRepository)
         {
             _kanaRepository = kanaRepository;
         }
+
+        /// <summary>
+        /// Create a quiz whit given type question.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="nbAnwsers"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public Quiz CreateQuiz(KanaType type, byte nbAnwsers = 4)
+        {
+            Quiz quiz = type switch
+            {
+                KanaType.Hiragana => CreateHiraganaQuiz(nbAnwsers),
+                KanaType.Katakana => CreateKatakanaQuiz(nbAnwsers),
+                KanaType.Kanji => throw new NotImplementedException(),
+                KanaType.Romanji => throw new NotImplementedException(),
+                _ => throw new ArgumentOutOfRangeException(nameof(type), type, "KanaType unknow")
+            };
+
+            return quiz;
+        }
         
         /// <summary>
-        /// Create a quiz whit hiragana question
+        /// Create a quiz whit hiragana question.
         /// </summary>
         /// <param name="nbAnwsers"></param>
         /// <returns></returns>
-        public Quiz CreateHiraganaQuiz(sbyte nbAnwsers = 4)
+        public Quiz CreateHiraganaQuiz(byte nbAnwsers = 4)
+        {
+            return GenerateQuiz(nbAnwsers, KanaType.Hiragana);
+        }
+        
+        /// <summary>
+        /// Create a quiz whit katakana question.
+        /// </summary>
+        /// <param name="nbAnwsers"></param>
+        /// <returns></returns>
+        public Quiz CreateKatakanaQuiz(byte nbAnwsers = 4)
         {
             return GenerateQuiz(nbAnwsers, KanaType.Katakana);
         }

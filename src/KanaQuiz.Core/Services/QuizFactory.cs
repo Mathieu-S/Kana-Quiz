@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using KanaQuiz.Core.Models;
 using KanaQuiz.Core.Repositories;
@@ -98,6 +98,23 @@ namespace KanaQuiz.Core.Services
             };
 
             return quiz;
+        }
+
+        /// <summary>
+        /// Determines if the quiz can be generated.
+        /// </summary>
+        /// <param name="nbAnwsers"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        private bool IsCreatable(byte nbAnwsers, KanaType type)
+        {
+            if (nbAnwsers >= 2 && nbAnwsers <= _kanaRepository.CountByType(type))
+            {
+                return true;
+            }
+
+            throw new ArgumentException("The number of responses requested is invalid");
         }
     }
 }

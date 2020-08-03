@@ -7,5 +7,6 @@ namespace KanaQuiz.Core.Repositories
     {
         T Get();
         IEnumerable<T> GetAll();
+        uint CountByType(KanaType type);
     }
 }

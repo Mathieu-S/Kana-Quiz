@@ -42,7 +42,7 @@ namespace KanaQuiz.Tests.Services
         {
             // Arrange
             var kanaRepository = Substitute.For<IRepository<Kana>>();
-            kanaRepository.GetAll().Returns(_hiraganas);
+            kanaRepository.GetAllByType(type).Returns(_hiraganas);
             switch (type)
             {
                 case KanaType.Hiragana:
@@ -70,7 +70,7 @@ namespace KanaQuiz.Tests.Services
         {
             // Arrange
             var kanaRepository = Substitute.For<IRepository<Kana>>();
-            kanaRepository.GetAll().Returns(_hiraganas);
+            kanaRepository.GetAllByType(Arg.Any<KanaType>()).Returns(_hiraganas);
             kanaRepository.CountByType(Arg.Any<KanaType>()).Returns((byte) _hiraganas.Count());
 
             // Act
@@ -90,7 +90,7 @@ namespace KanaQuiz.Tests.Services
         {
             // Arrange
             var kanaRepository = Substitute.For<IRepository<Kana>>();
-            kanaRepository.GetAll().Returns(_hiraganas);
+            kanaRepository.GetAllByType(Arg.Any<KanaType>()).Returns(_hiraganas);
             kanaRepository.CountByType(Arg.Any<KanaType>()).Returns((byte) _hiraganas.Count());
 
             // Act
@@ -108,7 +108,7 @@ namespace KanaQuiz.Tests.Services
         {
             // Arrange
             var kanaRepository = Substitute.For<IRepository<Kana>>();
-            kanaRepository.GetAll().Returns(_katakana);
+            kanaRepository.GetAllByType(Arg.Any<KanaType>()).Returns(_katakana);
             kanaRepository.CountByType(Arg.Any<KanaType>()).Returns((byte) _katakana.Count());
 
             // Act
@@ -128,7 +128,7 @@ namespace KanaQuiz.Tests.Services
         {
             // Arrange
             var kanaRepository = Substitute.For<IRepository<Kana>>();
-            kanaRepository.GetAll().Returns(_katakana);
+            kanaRepository.GetAllByType(Arg.Any<KanaType>()).Returns(_katakana);
             kanaRepository.CountByType(Arg.Any<KanaType>()).Returns((byte) _katakana.Count());
 
             // Act

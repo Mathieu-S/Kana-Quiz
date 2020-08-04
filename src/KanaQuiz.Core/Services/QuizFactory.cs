@@ -77,7 +77,7 @@ namespace KanaQuiz.Core.Services
             var answers = new List<Kana>();
 
             // Get all the hiraganas
-            var kanas = (List<Kana>) _kanaRepository.GetAll();
+            var kanas = (List<Kana>) _kanaRepository.GetAllByType(type);
             
             // Add answers to quiz
             for (var i = 0; i < nbAnwsers; i++)

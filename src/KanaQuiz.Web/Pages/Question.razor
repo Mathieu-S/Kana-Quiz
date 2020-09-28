@@ -3,29 +3,33 @@
 @using KanaQuiz.Core.Services
 @inject QuizFactory QuizFactory
 
-<section id="quiz" class="container">
-    <h2>Quiz</h2>
+<section id="question" class="container">
+    <h2 class="title">Guess this hiragana</h2>
 
-    <h3>@quiz.GoodAnswer.Value</h3>
+    <h3 class="quiz">@quiz.GoodAnswer.Value</h3>
 
-    <div>
-        @if (answered)
-        {
+    @if (answered)
+    {
+        <div class="corrector">
             @if (goodAnwser)
             {
-                <p>Good Anwser</p>
+                <p class="good-answer">Good Anwser</p>
             }
             else
             {
-                <p>Wrong Anwser</p>
+                <p class="wrong-answer">Wrong Anwser, it was <b>@quiz.GoodAnswer.Romanji</b>.</p>
             }
-            <button @onclick="Retry">Retry</button>
-        }
-    </div>
-
-    @foreach (var answer in quiz.Answers)
+            <button class="retry" @onclick="Retry">Retry</button>
+        </div>
+    }
+    else
     {
-        <button disabled="@answered" @onclick="() => CheckAnwser(answer)">@answer.Romanji</button>
+        <div class="answers">
+            @foreach (var answer in quiz.Answers)
+            {
+                <button class="answer" disabled="@answered" @onclick="() => CheckAnwser(answer)">@answer.Romanji</button>
+            }
+        </div>
     }
 </section>
 

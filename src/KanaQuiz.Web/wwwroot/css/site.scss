@@ -1,7 +1,18 @@
+/*Dependencies*/
 @import "../lib/modern-normalize/modern-normalize.min.css";
 
+/*Components & utilities*/
+@import "utils/layout.scss";
+
 header {
+    h1 {
+        text-align: center;
+    }
+
     nav {
+        display: flex;
+        justify-content: center;
+
         a {
             color: grey;
             padding: 10px;
@@ -25,7 +36,6 @@ main {
 footer {
     position: absolute;
     bottom: 0;
-    margin-right: 10px;
     width: 100%;
     text-align: right;
 }

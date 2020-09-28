@@ -1,0 +1,31 @@
+@import "../lib/modern-normalize/modern-normalize.min.css";
+
+header {
+    nav {
+        a {
+            color: grey;
+            padding: 10px;
+            margin-right: 10px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &.active {
+                color: Highlight;
+            }
+        }
+    }
+}
+
+main {
+    @import "home.scss";
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    margin-right: 10px;
+    width: 100%;
+    text-align: right;
+}

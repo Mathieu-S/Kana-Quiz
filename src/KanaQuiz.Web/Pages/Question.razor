@@ -1,0 +1,60 @@
+﻿@page "/question"
+@using KanaQuiz.Core.Models
+@using KanaQuiz.Core.Services
+@inject QuizFactory QuizFactory
+
+<section id="question" class="container">
+    <h2 class="title">Guess this hiragana</h2>
+
+    <h3 class="quiz">@quiz.GoodAnswer.Value</h3>
+
+    @if (answered)
+    {
+        <div class="corrector">
+            @if (goodAnwser)
+            {
+                <p class="good-answer">Good Anwser</p>
+            }
+            else
+            {
+                <p class="wrong-answer">Wrong Anwser, it was <b>@quiz.GoodAnswer.Romanji</b>.</p>
+            }
+            <button class="retry" @onclick="Retry">Retry</button>
+        </div>
+    }
+    else
+    {
+        <div class="answers">
+            @foreach (var answer in quiz.Answers)
+            {
+                <button class="answer" disabled="@answered" @onclick="() => CheckAnwser(answer)">@answer.Romanji</button>
+            }
+        </div>
+    }
+</section>
+
+@code {
+    private Quiz quiz;
+    private bool goodAnwser;
+    private bool answered;
+
+    protected override async Task OnInitializedAsync()
+    {
+        answered = false;
+        goodAnwser = false;
+        quiz = await QuizFactory.CreateHiraganaQuizAsync(4);
+    }
+
+    private void CheckAnwser(Kana answer)
+    {
+        answered = true;
+        goodAnwser = answer.Value == quiz.GoodAnswer.Value;
+    }
+
+    private async void Retry()
+    {
+        answered = false;
+        goodAnwser = false;
+        quiz = await QuizFactory.CreateHiraganaQuizAsync(4);
+    }
+}

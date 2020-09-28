@@ -1,0 +1,53 @@
+﻿#question {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    .title {
+        margin-bottom: 0;
+    }
+
+    .quiz {
+        font-size: 5em;
+        margin: 0.5em 0;
+    }
+
+    .corrector {
+        p {
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+
+        b {
+            text-transform: uppercase;
+        }
+
+        .good-answer {
+            color: forestgreen;
+        }
+
+        .wrong-answer {
+            color: crimson;
+        }
+    }
+
+    .answers {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        .answer {
+            padding: 1em 2em;
+            margin: 0 0.5em;
+            text-transform: uppercase;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}

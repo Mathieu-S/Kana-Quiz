@@ -1,10 +1,12 @@
 ﻿@page "/counter"
 
-<h1>Counter</h1>
+<section id="counter" class="container">
+    <h2>Counter</h2>
 
-<p>Current count: @currentCount</p>
+    <p>Current count: @currentCount</p>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+    <button @onclick="IncrementCount">Click me</button>
+</section>
 
 @code {
     private int currentCount;
@@ -13,5 +15,4 @@
     {
         currentCount++;
     }
-
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using KanaQuiz.Core.Models;
 using KanaQuiz.Core.Repositories;
 
@@ -22,7 +24,7 @@ namespace KanaQuiz.Core.Services
         }
 
         /// <summary>
-        /// Create a quiz whit given type question.
+        /// Create a quiz with given type question.
         /// </summary>
         /// <param name="type"></param>
         /// <param name="nbAnwsers"></param>
@@ -42,9 +44,20 @@ namespace KanaQuiz.Core.Services
 
             return quiz;
         }
-        
+
         /// <summary>
-        /// Create a quiz whit hiragana question.
+        /// Create a quiz with given type question asynchronous.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <param name="nbAnwsers">The nb anwsers.</param>
+        /// <returns></returns>
+        public Task<Quiz> CreateQuizAsync(KanaType type, byte nbAnwsers = 4)
+        {
+            return Task.FromResult(CreateQuiz(type, nbAnwsers));
+        }
+
+        /// <summary>
+        /// Create a quiz with hiragana question.
         /// </summary>
         /// <param name="nbAnwsers"></param>
         /// <returns></returns>
@@ -52,9 +65,19 @@ namespace KanaQuiz.Core.Services
         {
             return GenerateQuiz(nbAnwsers, KanaType.Hiragana);
         }
-        
+
         /// <summary>
-        /// Create a quiz whit katakana question.
+        /// Create a quiz with hiragana question asynchronously.
+        /// </summary>
+        /// <param name="nbAnwsers">The nb anwsers.</param>
+        /// <returns></returns>
+        public Task<Quiz> CreateHiraganaQuizAsync(byte nbAnwsers)
+        {
+            return Task.FromResult(CreateHiraganaQuiz(nbAnwsers));
+        }
+
+        /// <summary>
+        /// Create a quiz with katakana question.
         /// </summary>
         /// <param name="nbAnwsers"></param>
         /// <returns></returns>
@@ -62,7 +85,17 @@ namespace KanaQuiz.Core.Services
         {
             return GenerateQuiz(nbAnwsers, KanaType.Katakana);
         }
-        
+
+        /// <summary>
+        /// Create a quiz with katakana question asynchronously.
+        /// </summary>
+        /// <param name="nbAnwsers">The nb anwsers.</param>
+        /// <returns></returns>
+        public Task<Quiz> CreateKatakanaQuizAsync(byte nbAnwsers)
+        {
+            return Task.FromResult(CreateKatakanaQuiz(nbAnwsers));
+        }
+
         /// <summary>
         /// Build the quiz.
         /// </summary>
@@ -76,20 +109,22 @@ namespace KanaQuiz.Core.Services
             var rng = new Random();
             var answers = new List<Kana>();
 
-            // Get all the hiraganas
+            // Get all the kana by type
             var kanas = (List<Kana>) _kanaRepository.GetAllByType(type);
             
             // Add answers to quiz
             for (var i = 0; i < nbAnwsers; i++)
             {
-                answers.Add(kanas[rng.Next(0, kanas.Count)]);
+                var idKana = kanas[rng.Next(0, kanas.Count)];
+                answers.Add(idKana);
+                kanas.Remove(idKana);
             }
             
             // Selection a good answer randomly
             var goodAnswer = answers[rng.Next(0, answers.Count)];
             
             // Create quiz
-            var quiz = new Quiz()
+            var quiz = new Quiz
             {
                 Title = "Guess this Hiragana",
                 Type = type,

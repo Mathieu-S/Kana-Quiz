@@ -31,7 +31,7 @@ namespace KanaQuiz.Tests.Services
                 new Kana {Id = 7, Romanji = "i", Value = "イ", Type = KanaType.Katakana},
                 new Kana {Id = 8, Romanji = "u", Value = "ウ", Type = KanaType.Katakana},
                 new Kana {Id = 9, Romanji = "e", Value = "エ", Type = KanaType.Katakana},
-                new Kana {Id = 10, Romanji = "o", Value = "オ", Type = KanaType.Katakana},
+                new Kana {Id = 10, Romanji = "o", Value = "オ", Type = KanaType.Katakana}
             };
         }
 

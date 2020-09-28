@@ -37,7 +37,7 @@ namespace KanaQuiz.Web.Data
             return _hiraganas;
         }
 
-        public IAsyncEnumerable<Kana> GetAllAsync()
+        public Task<IEnumerable<Kana>> GetAllAsync()
         {
             throw new System.NotImplementedException();
         }
@@ -47,7 +47,7 @@ namespace KanaQuiz.Web.Data
             return _hiraganas.Where(x => x.Type == type).ToList();
         }
 
-        public IAsyncEnumerable<Kana> GetAllByTypeAsync(KanaType type)
+        public Task<IEnumerable<Kana>> GetAllByTypeAsync(KanaType type)
         {
             throw new System.NotImplementedException();
         }

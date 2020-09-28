@@ -109,20 +109,22 @@ namespace KanaQuiz.Core.Services
             var rng = new Random();
             var answers = new List<Kana>();
 
-            // Get all the hiraganas
+            // Get all the kana by type
             var kanas = (List<Kana>) _kanaRepository.GetAllByType(type);
             
             // Add answers to quiz
             for (var i = 0; i < nbAnwsers; i++)
             {
-                answers.Add(kanas[rng.Next(0, kanas.Count)]);
+                var idKana = kanas[rng.Next(0, kanas.Count)];
+                answers.Add(idKana);
+                kanas.Remove(idKana);
             }
             
             // Selection a good answer randomly
             var goodAnswer = answers[rng.Next(0, answers.Count)];
             
             // Create quiz
-            var quiz = new Quiz()
+            var quiz = new Quiz
             {
                 Title = "Guess this Hiragana",
                 Type = type,

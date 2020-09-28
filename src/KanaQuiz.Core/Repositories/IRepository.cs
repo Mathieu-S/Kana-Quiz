@@ -9,9 +9,9 @@ namespace KanaQuiz.Core.Repositories
         T Get(uint id);
         Task<T> GetAsync(uint id);
         IEnumerable<T> GetAll();
-        IAsyncEnumerable<T> GetAllAsync();
+        Task<IEnumerable<Kana>> GetAllAsync();
         IEnumerable<T> GetAllByType(KanaType type);
-        IAsyncEnumerable<T> GetAllByTypeAsync(KanaType type);
+        Task<IEnumerable<T>> GetAllByTypeAsync(KanaType type);
         uint CountByType(KanaType type);
         Task<uint> CountByTypeAsync(KanaType type);
     }

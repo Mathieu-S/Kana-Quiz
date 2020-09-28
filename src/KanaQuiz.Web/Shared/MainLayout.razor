@@ -1,11 +1,19 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="main">
-    <div class="top-row px-4">
-        <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-    </div>
+<header>
+    <h1>Kana-Quiz</h1>
 
-    <div class="content px-4">
-        @Body
-    </div>
-</div>
+    <nav>
+        <NavLink href="" Match="NavLinkMatch.All">Home</NavLink>
+        <NavLink href="counter">Counter</NavLink>
+        <NavLink href="fetchdata">Fetch data</NavLink>
+    </nav>
+</header>
+
+<main>
+    @Body
+</main>
+
+<footer>
+    KanaQuiz Version 0.1.0
+</footer>

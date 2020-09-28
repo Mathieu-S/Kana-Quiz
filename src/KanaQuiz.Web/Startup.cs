@@ -1,3 +1,6 @@
+using KanaQuiz.Core.Models;
+using KanaQuiz.Core.Repositories;
+using KanaQuiz.Core.Services;
 using KanaQuiz.Web.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,6 +26,8 @@ namespace KanaQuiz.Web
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddSingleton<IRepository<Kana>, KanaData>();
+            services.AddSingleton<QuizFactory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

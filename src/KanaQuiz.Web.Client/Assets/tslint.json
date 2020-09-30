@@ -1,0 +1,12 @@
+{
+    "extends": [
+        "tslint:latest",
+        "tslint-react",
+        "tslint-config-prettier"
+    ],
+    "rules": {
+        "max-line-length": [
+            180
+        ],
+    }
+}

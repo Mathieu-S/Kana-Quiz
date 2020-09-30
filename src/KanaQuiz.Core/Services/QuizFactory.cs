@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using KanaQuiz.Core.Models;
 using KanaQuiz.Core.Repositories;
@@ -8,14 +7,14 @@ using KanaQuiz.Core.Repositories;
 namespace KanaQuiz.Core.Services
 {
     /// <summary>
-    /// A Quiz Factory.
+    ///     A Quiz Factory.
     /// </summary>
     public class QuizFactory
     {
         private readonly IRepository<Kana> _kanaRepository;
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="kanaRepository"></param>
         public QuizFactory(IRepository<Kana> kanaRepository)
@@ -24,7 +23,7 @@ namespace KanaQuiz.Core.Services
         }
 
         /// <summary>
-        /// Create a quiz with given type question.
+        ///     Create a quiz with given type question.
         /// </summary>
         /// <param name="type"></param>
         /// <param name="nbAnwsers"></param>
@@ -33,7 +32,7 @@ namespace KanaQuiz.Core.Services
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         public Quiz CreateQuiz(KanaType type, byte nbAnwsers = 4)
         {
-            Quiz quiz = type switch
+            var quiz = type switch
             {
                 KanaType.Hiragana => CreateHiraganaQuiz(nbAnwsers),
                 KanaType.Katakana => CreateKatakanaQuiz(nbAnwsers),
@@ -46,7 +45,7 @@ namespace KanaQuiz.Core.Services
         }
 
         /// <summary>
-        /// Create a quiz with given type question asynchronous.
+        ///     Create a quiz with given type question asynchronous.
         /// </summary>
         /// <param name="type">The type.</param>
         /// <param name="nbAnwsers">The nb anwsers.</param>
@@ -57,7 +56,7 @@ namespace KanaQuiz.Core.Services
         }
 
         /// <summary>
-        /// Create a quiz with hiragana question.
+        ///     Create a quiz with hiragana question.
         /// </summary>
         /// <param name="nbAnwsers"></param>
         /// <returns></returns>
@@ -67,7 +66,7 @@ namespace KanaQuiz.Core.Services
         }
 
         /// <summary>
-        /// Create a quiz with hiragana question asynchronously.
+        ///     Create a quiz with hiragana question asynchronously.
         /// </summary>
         /// <param name="nbAnwsers">The nb anwsers.</param>
         /// <returns></returns>
@@ -77,7 +76,7 @@ namespace KanaQuiz.Core.Services
         }
 
         /// <summary>
-        /// Create a quiz with katakana question.
+        ///     Create a quiz with katakana question.
         /// </summary>
         /// <param name="nbAnwsers"></param>
         /// <returns></returns>
@@ -87,7 +86,7 @@ namespace KanaQuiz.Core.Services
         }
 
         /// <summary>
-        /// Create a quiz with katakana question asynchronously.
+        ///     Create a quiz with katakana question asynchronously.
         /// </summary>
         /// <param name="nbAnwsers">The nb anwsers.</param>
         /// <returns></returns>
@@ -97,7 +96,7 @@ namespace KanaQuiz.Core.Services
         }
 
         /// <summary>
-        /// Build the quiz.
+        ///     Build the quiz.
         /// </summary>
         /// <param name="nbAnwsers"></param>
         /// <param name="type"></param>
@@ -105,13 +104,13 @@ namespace KanaQuiz.Core.Services
         private Quiz GenerateQuiz(byte nbAnwsers, KanaType type)
         {
             IsCreatable(nbAnwsers, type);
-            
+
             var rng = new Random();
             var answers = new List<Kana>();
 
             // Get all the kana by type
             var kanas = (List<Kana>) _kanaRepository.GetAllByType(type);
-            
+
             // Add answers to quiz
             for (var i = 0; i < nbAnwsers; i++)
             {
@@ -119,10 +118,10 @@ namespace KanaQuiz.Core.Services
                 answers.Add(idKana);
                 kanas.Remove(idKana);
             }
-            
+
             // Selection a good answer randomly
             var goodAnswer = answers[rng.Next(0, answers.Count)];
-            
+
             // Create quiz
             var quiz = new Quiz
             {
@@ -136,7 +135,7 @@ namespace KanaQuiz.Core.Services
         }
 
         /// <summary>
-        /// Determines if the quiz can be generated.
+        ///     Determines if the quiz can be generated.
         /// </summary>
         /// <param name="nbAnwsers"></param>
         /// <param name="type"></param>
@@ -144,10 +143,7 @@ namespace KanaQuiz.Core.Services
         /// <exception cref="ArgumentException"></exception>
         private bool IsCreatable(byte nbAnwsers, KanaType type)
         {
-            if (nbAnwsers >= 2 && nbAnwsers <= _kanaRepository.CountByType(type))
-            {
-                return true;
-            }
+            if (nbAnwsers >= 2 && nbAnwsers <= _kanaRepository.CountByType(type)) return true;
 
             throw new ArgumentException("The number of responses requested is invalid");
         }

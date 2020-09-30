@@ -1,10 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanaQuiz.Tests", "test\KanaQuiz.Tests\KanaQuiz.Tests.csproj", "{1972036E-5516-4E75-AD97-CE124105EB67}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KanaQuiz.Tests", "test\KanaQuiz.Tests\KanaQuiz.Tests.csproj", "{1972036E-5516-4E75-AD97-CE124105EB67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanaQuiz.Core", "src\KanaQuiz.Core\KanaQuiz.Core.csproj", "{A26EE80A-C744-4411-9B92-E32920B6020E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KanaQuiz.Core", "src\KanaQuiz.Core\KanaQuiz.Core.csproj", "{A26EE80A-C744-4411-9B92-E32920B6020E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanaQuiz.Web", "src\KanaQuiz.Web\KanaQuiz.Web.csproj", "{7505CE36-AB82-42B0-B07D-AEBD2C2979A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KanaQuiz.Web.Server", "src\KanaQuiz.Web.Server\KanaQuiz.Web.Server.csproj", "{897E57B4-9029-49E5-8909-B0DA4AFDF069}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KanaQuiz.Web.Client", "src\KanaQuiz.Web.Client\KanaQuiz.Web.Client.csproj", "{39FAD285-7EE3-4B1A-950A-9906974E54BC}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F9853F34-1CC2-4C9F-919F-AE8BA0BBF5B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,9 +27,23 @@ Global
 		{A26EE80A-C744-4411-9B92-E32920B6020E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A26EE80A-C744-4411-9B92-E32920B6020E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A26EE80A-C744-4411-9B92-E32920B6020E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7505CE36-AB82-42B0-B07D-AEBD2C2979A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7505CE36-AB82-42B0-B07D-AEBD2C2979A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7505CE36-AB82-42B0-B07D-AEBD2C2979A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7505CE36-AB82-42B0-B07D-AEBD2C2979A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{897E57B4-9029-49E5-8909-B0DA4AFDF069}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{897E57B4-9029-49E5-8909-B0DA4AFDF069}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{897E57B4-9029-49E5-8909-B0DA4AFDF069}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{897E57B4-9029-49E5-8909-B0DA4AFDF069}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39FAD285-7EE3-4B1A-950A-9906974E54BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39FAD285-7EE3-4B1A-950A-9906974E54BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39FAD285-7EE3-4B1A-950A-9906974E54BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39FAD285-7EE3-4B1A-950A-9906974E54BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9853F34-1CC2-4C9F-919F-AE8BA0BBF5B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9853F34-1CC2-4C9F-919F-AE8BA0BBF5B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9853F34-1CC2-4C9F-919F-AE8BA0BBF5B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9853F34-1CC2-4C9F-919F-AE8BA0BBF5B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F77BD9E0-85E7-4303-A929-340B398DD4F8}
 	EndGlobalSection
 EndGlobal

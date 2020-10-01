@@ -1,0 +1,15 @@
+﻿::placeholder {
+  color: gray;
+}
+
+h1 {
+  color: crimson;
+}
+
+nav {
+  color: blue;
+
+  & a {
+    color: green;
+  }
+}

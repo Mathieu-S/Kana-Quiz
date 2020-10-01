@@ -7,12 +7,12 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["src/KanaQuiz.Web.Server/KanaQuiz.Web.Server.csproj", "src/KanaQuiz.Web.Server/"]
-COPY ["src/KanaQuiz.Core/KanaQuiz.Core.csproj", "src/KanaQuiz.Core/"]
-COPY ["src/KanaQuiz.Web.Client/KanaQuiz.Web.Client.csproj", "src/KanaQuiz.Web.Client/"]
-RUN dotnet restore "src/KanaQuiz.Web.Server/KanaQuiz.Web.Server.csproj"
+COPY ["src/KanaQuiz.Web.Server/KanaQuiz.Web.Server.csproj", "KanaQuiz.Web.Server/"]
+COPY ["src/KanaQuiz.Web.Client/KanaQuiz.Web.Client.csproj", "KanaQuiz.Web.Client/"]
+COPY ["src/KanaQuiz.Core/KanaQuiz.Core.csproj", "KanaQuiz.Core/"]
+RUN dotnet restore "KanaQuiz.Web.Server/KanaQuiz.Web.Server.csproj"
 COPY . .
-WORKDIR "/src/src/KanaQuiz.Web.Server"
+WORKDIR "/src/KanaQuiz.Web.Server"
 RUN dotnet build "KanaQuiz.Web.Server.csproj" -c Release -o /app/build
 
 FROM build AS publish

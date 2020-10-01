@@ -4,6 +4,7 @@
     "build": "webpack --env.prod"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^6.1.1",
     "css-loader": "^4.3.0",
     "html-webpack-plugin": "^4.5.0",
     "mini-css-extract-plugin": "^0.11.2",

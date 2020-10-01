@@ -1,15 +1,18 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="sidebar">
-    <NavMenu/>
-</div>
+<header>
+    <h1>Kana-Quiz</h1>
 
-<div class="main">
-    <div class="top-row px-4">
-        <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
-    </div>
+    <nav>
+        <NavLink href="" Match="NavLinkMatch.All">Home</NavLink>
+        <NavLink href="question">Question</NavLink>
+    </nav>
+</header>
 
-    <div class="content px-4">
-        @Body
-    </div>
-</div>
+<main>
+    @Body
+</main>
+
+<footer>
+    KanaQuiz Version 0.1.0
+</footer>

@@ -12,7 +12,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - dotnet-packages-v1-{{ checksum "src/KanaQuiz.Web.Server.csproj" }}
+            - dotnet-packages-v1-{{ checksum "src/KanaQuiz.Web.Server/KanaQuiz.Web.Server.csproj" }}
       - run:
           name: "Build Application according to some given configuration"
           command: dotnet.exe build
@@ -22,7 +22,7 @@ jobs:
       - save_cache:
           paths:
             - C:\Users\circleci\.nuget\packages
-          key: dotnet-packages-v1-{{ checksum "src/KanaQuiz.Web.Server.csproj" }}
+          key: dotnet-packages-v1-{{ checksum "src/KanaQuiz.Web.Server/KanaQuiz.Web.Server.csproj" }}
 
   test:
     description: Setup and run application tests

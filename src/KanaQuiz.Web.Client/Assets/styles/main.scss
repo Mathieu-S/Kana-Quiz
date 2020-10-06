@@ -1,0 +1,42 @@
+﻿/*Dependencies*/
+@import "~modern-normalize";
+
+/*Components, utilities and themes*/
+@import "utils/layout.scss";
+
+header {
+    h1 {
+        text-align: center;
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+
+        a {
+            color: grey;
+            padding: 10px;
+            margin-right: 10px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &.active {
+                color: Highlight;
+            }
+        }
+    }
+}
+
+main {
+    @import "pages/home.scss";
+    @import "pages/question.scss";
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: right;
+}

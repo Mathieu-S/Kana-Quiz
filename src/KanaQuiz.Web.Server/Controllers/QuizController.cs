@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using KanaQuiz.Core.Models;
-using KanaQuiz.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KanaQuiz.Web.Server.Controllers

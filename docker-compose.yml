@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  kanaquiz.web.server:
+    image: ${DOCKER_REGISTRY-}kanaquizwebserver
+    build:
+      context: .
+      dockerfile: src/KanaQuiz.Web.Server/Dockerfile
+    ports:
+      - "7070:80"
+      - "9090:443"

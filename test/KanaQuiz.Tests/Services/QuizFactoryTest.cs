@@ -24,7 +24,7 @@ namespace KanaQuiz.Tests.Services
                 new Kana {Id = 4, Romanji = "e", Value = "え", Type = KanaType.Hiragana},
                 new Kana {Id = 5, Romanji = "o", Value = "お", Type = KanaType.Hiragana}
             };
-            
+
             _katakana = new List<Kana>
             {
                 new Kana {Id = 6, Romanji = "a", Value = "ア", Type = KanaType.Katakana},
@@ -61,7 +61,7 @@ namespace KanaQuiz.Tests.Services
             Assert.Equal(4, result.Answers.Count());
             Assert.Contains(result.GoodAnswer, result.Answers);
         }
-        
+
         [Theory]
         [InlineData(2)]
         [InlineData(3)]
@@ -82,7 +82,7 @@ namespace KanaQuiz.Tests.Services
             Assert.Equal(KanaType.Hiragana, result.Type);
             Assert.Contains(result.GoodAnswer, result.Answers);
         }
-        
+
         [Theory]
         [InlineData(1)]
         [InlineData(6)]
@@ -99,7 +99,7 @@ namespace KanaQuiz.Tests.Services
             // Assert
             Assert.Throws<ArgumentException>(() => quizFactory.CreateHiraganaQuiz(nbAnwsers));
         }
-        
+
         [Theory]
         [InlineData(2)]
         [InlineData(3)]
@@ -120,7 +120,7 @@ namespace KanaQuiz.Tests.Services
             Assert.Equal(KanaType.Katakana, result.Type);
             Assert.Contains(result.GoodAnswer, result.Answers);
         }
-        
+
         [Theory]
         [InlineData(1)]
         [InlineData(6)]

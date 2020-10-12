@@ -18,5 +18,4 @@
     <ProjectReference Include="..\KanaQuiz.Web.Client\KanaQuiz.Web.Client.csproj" />
   </ItemGroup>
 
-
 </Project>

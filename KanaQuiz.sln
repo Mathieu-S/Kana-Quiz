@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KanaQuiz.Web.Client", "src\
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F9853F34-1CC2-4C9F-919F-AE8BA0BBF5B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanaQuiz.Infrastructure", "src\KanaQuiz.Infrastructure\KanaQuiz.Infrastructure.csproj", "{4753FC37-B071-45EF-A485-0CD1C4E846F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F9853F34-1CC2-4C9F-919F-AE8BA0BBF5B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9853F34-1CC2-4C9F-919F-AE8BA0BBF5B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9853F34-1CC2-4C9F-919F-AE8BA0BBF5B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4753FC37-B071-45EF-A485-0CD1C4E846F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4753FC37-B071-45EF-A485-0CD1C4E846F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4753FC37-B071-45EF-A485-0CD1C4E846F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4753FC37-B071-45EF-A485-0CD1C4E846F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

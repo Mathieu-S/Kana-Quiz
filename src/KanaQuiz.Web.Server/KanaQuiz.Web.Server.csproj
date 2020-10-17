@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KanaQuiz.Core\KanaQuiz.Core.csproj" />
+    <ProjectReference Include="..\KanaQuiz.Infrastructure\KanaQuiz.Infrastructure.csproj" />
     <ProjectReference Include="..\KanaQuiz.Web.Client\KanaQuiz.Web.Client.csproj" />
   </ItemGroup>
 

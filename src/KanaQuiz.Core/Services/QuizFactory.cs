@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using KanaQuiz.Core.Exceptions;
 using KanaQuiz.Core.Models;
 using KanaQuiz.Core.Repositories;
 
@@ -11,13 +12,13 @@ namespace KanaQuiz.Core.Services
     /// </summary>
     public class QuizFactory
     {
-        private readonly IRepository<Kana> _kanaRepository;
+        private readonly IKanaRepository _kanaRepository;
 
         /// <summary>
         ///     Constructor
         /// </summary>
         /// <param name="kanaRepository"></param>
-        public QuizFactory(IRepository<Kana> kanaRepository)
+        public QuizFactory(IKanaRepository kanaRepository)
         {
             _kanaRepository = kanaRepository;
         }
@@ -133,6 +134,45 @@ namespace KanaQuiz.Core.Services
 
             return quiz;
         }
+        
+        /// <summary>
+        ///     Build the quiz asynchronously.
+        /// </summary>
+        /// <param name="nbAnwsers"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        private async Task<Quiz> GenerateQuizAsync(byte nbAnwsers, KanaType type)
+        {
+            IsCreatable(nbAnwsers, type);
+
+            var rng = new Random();
+            var answers = new List<Kana>();
+
+            // Get all the kana by type
+            var kanas = (List<Kana>) await _kanaRepository.GetAllByTypeAsync(type);
+
+            // Add answers to quiz
+            for (var i = 0; i < nbAnwsers; i++)
+            {
+                var idKana = kanas[rng.Next(0, kanas.Count)];
+                answers.Add(idKana);
+                kanas.Remove(idKana);
+            }
+
+            // Selection a good answer randomly
+            var goodAnswer = answers[rng.Next(0, answers.Count)];
+
+            // Create quiz
+            var quiz = new Quiz
+            {
+                Title = "Guess this Hiragana",
+                Type = type,
+                Answers = answers,
+                GoodAnswer = goodAnswer
+            };
+
+            return quiz;
+        }
 
         /// <summary>
         ///     Determines if the quiz can be generated.
@@ -145,7 +185,7 @@ namespace KanaQuiz.Core.Services
         {
             if (nbAnwsers >= 2 && nbAnwsers <= _kanaRepository.CountByType(type)) return true;
 
-            throw new ArgumentException("The number of responses requested is invalid");
+            throw new KanaQuizException("The number of responses requested is invalid");
         }
     }
 }

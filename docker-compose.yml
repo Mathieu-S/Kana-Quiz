@@ -9,3 +9,9 @@ services:
     ports:
       - "7070:80"
       - "9090:443"
+  postgre:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"

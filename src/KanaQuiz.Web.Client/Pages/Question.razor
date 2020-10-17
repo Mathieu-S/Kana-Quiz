@@ -62,5 +62,6 @@
         answered = false;
         goodAnwser = false;
         quiz = await Http.GetFromJsonAsync<Quiz>("Quiz");
+        StateHasChanged();
     }
 }

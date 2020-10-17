@@ -17,6 +17,7 @@ WORKDIR /src
 COPY ["src/KanaQuiz.Web.Server/", "KanaQuiz.Web.Server/"]
 COPY ["src/KanaQuiz.Web.Client/", "KanaQuiz.Web.Client/"]
 COPY ["src/KanaQuiz.Core/", "KanaQuiz.Core/"]
+COPY ["src/KanaQuiz.Infrastructure/", "KanaQuiz.Infrastructure/"]
 COPY --from=assets /assets/wwwroot KanaQuiz.Web.Client/wwwroot
 RUN dotnet restore "KanaQuiz.Web.Server/KanaQuiz.Web.Server.csproj"
 WORKDIR /src/KanaQuiz.Web.Server

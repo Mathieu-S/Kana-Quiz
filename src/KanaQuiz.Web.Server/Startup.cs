@@ -1,3 +1,4 @@
+using System;
 using KanaQuiz.Core.Repositories;
 using KanaQuiz.Core.Services;
 using KanaQuiz.Infrastructure;
@@ -28,7 +29,15 @@ namespace KanaQuiz.Web.Server
             services.AddRazorPages();
 
             // DbContexts
-            services.AddDbContext<KanaQuizContext>(option => option.UseNpgsql(Configuration.GetConnectionString("KanaQuizDB")));
+            if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("KANAQUIZ_DB")))
+            {
+                services.AddDbContext<KanaQuizContext>(option => option.UseInMemoryDatabase("KANAQUIZ_DB"));
+            }
+            else
+            {
+                services.AddDbContext<KanaQuizContext>(option => option.UseNpgsql(Environment.GetEnvironmentVariable("KANAQUIZ_DB")));
+            }
+            
 
             // Repositoies
             services.AddScoped<IKanaRepository, KanaRepository>();

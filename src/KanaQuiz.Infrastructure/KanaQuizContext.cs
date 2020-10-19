@@ -5,19 +5,15 @@ namespace KanaQuiz.Infrastructure
 {
     public class KanaQuizContext : DbContext
     {
-        private readonly string _connectionString;
-
         public DbSet<Kana> Kanas { get; set; }
 
-        public KanaQuizContext(string connectionString)
+        public KanaQuizContext(DbContextOptions options) : base(options)
         {
-            _connectionString = connectionString;
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             //=> optionsBuilder.UseNpgsql("Host=postgre;Database=KanaQuiz;Username=postgres;Password=admin");
-            => optionsBuilder.UseNpgsql(_connectionString);
-        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Kana>().HasData(

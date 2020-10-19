@@ -28,7 +28,7 @@ namespace KanaQuiz.Web.Server
             services.AddRazorPages();
 
             // DbContexts
-            services.AddDbContext<KanaQuizContext>();
+            services.AddDbContext<KanaQuizContext>(option => option.UseNpgsql(Configuration.GetConnectionString("KanaQuizDB")));
 
             // Repositoies
             services.AddScoped<IKanaRepository, KanaRepository>();

@@ -52,13 +52,6 @@ namespace KanaQuiz.Web.Server
                 app.UseHsts();
             }
 
-            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-            {
-                var context = serviceScope.ServiceProvider.GetService<KanaQuizContext>();
-                context.Database.EnsureCreated();
-                context.Database.Migrate();
-            }
-
             app.UseHttpsRedirection();
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();

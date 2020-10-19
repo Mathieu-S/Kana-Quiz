@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Threading.Tasks;
 using KanaQuiz.Core.Models;
+using KanaQuiz.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KanaQuiz.Web.Server.Controllers
@@ -8,17 +9,17 @@ namespace KanaQuiz.Web.Server.Controllers
     [ApiController]
     public class QuizController : ControllerBase
     {
-        [HttpGet]
-        public Quiz Get()
+        private readonly QuizFactory _quizFactory;
+
+        public QuizController(QuizFactory quizFactory)
         {
-            var goodAnwser = new Kana{ Id = 1, Type = KanaType.Hiragana, Romanji = "a", Value = "a"};
-
-            var anwsers = new List<Kana>
-            {
-                goodAnwser
-            };
-
-            return new Quiz {Title = "test", Type = KanaType.Hiragana, GoodAnswer = goodAnwser, Answers = anwsers};
+            _quizFactory = quizFactory;
+        }
+        
+        [HttpGet]
+        public async Task<Quiz> Get()
+        {
+            return await _quizFactory.CreateHiraganaQuizAsync(4);
         }
     }
 }

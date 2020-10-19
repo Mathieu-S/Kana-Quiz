@@ -1,5 +1,11 @@
+using System;
+using KanaQuiz.Core.Repositories;
+using KanaQuiz.Core.Services;
+using KanaQuiz.Infrastructure;
+using KanaQuiz.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,6 +27,22 @@ namespace KanaQuiz.Web.Server
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            // DbContexts
+            if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("KANAQUIZ_DB")))
+            {
+                services.AddDbContext<KanaQuizContext>(option => option.UseInMemoryDatabase("KANAQUIZ_DB"));
+            }
+            else
+            {
+                services.AddDbContext<KanaQuizContext>(option => option.UseNpgsql(Environment.GetEnvironmentVariable("KANAQUIZ_DB")));
+            }
+
+            // Repositoies
+            services.AddScoped<IKanaRepository, KanaRepository>();
+
+            // Services
+            services.AddScoped<QuizFactory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

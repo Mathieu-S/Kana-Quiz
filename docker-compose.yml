@@ -6,6 +6,22 @@ services:
     build:
       context: .
       dockerfile: src/KanaQuiz.Web.Server/Dockerfile
+    environment:
+      KANAQUIZ_DB: Host=postgres;Database=KanaQuiz;Username=postgres;Password=admin
+    depends_on:
+      - postgres
     ports:
       - "7070:80"
       - "9090:443"
+  postgres:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+  adminer:
+    image: adminer:4
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"

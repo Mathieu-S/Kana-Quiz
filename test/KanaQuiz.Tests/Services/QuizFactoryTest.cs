@@ -41,7 +41,7 @@ namespace KanaQuiz.Tests.Services
         public void CreateQuiz_Test(KanaType type)
         {
             // Arrange
-            var kanaRepository = Substitute.For<IRepository<Kana>>();
+            var kanaRepository = Substitute.For<IKanaRepository>();
             kanaRepository.GetAllByType(type).Returns(_hiraganas);
             switch (type)
             {
@@ -69,7 +69,7 @@ namespace KanaQuiz.Tests.Services
         public void CreateHiraganaQuiz_Test(byte nbAnwsers)
         {
             // Arrange
-            var kanaRepository = Substitute.For<IRepository<Kana>>();
+            var kanaRepository = Substitute.For<IKanaRepository>();
             kanaRepository.GetAllByType(Arg.Any<KanaType>()).Returns(_hiraganas);
             kanaRepository.CountByType(Arg.Any<KanaType>()).Returns((byte) _hiraganas.Count());
 
@@ -89,7 +89,7 @@ namespace KanaQuiz.Tests.Services
         public void CreateHiraganaQuiz_OutOfRange_Test(byte nbAnwsers)
         {
             // Arrange
-            var kanaRepository = Substitute.For<IRepository<Kana>>();
+            var kanaRepository = Substitute.For<IKanaRepository>();
             kanaRepository.GetAllByType(Arg.Any<KanaType>()).Returns(_hiraganas);
             kanaRepository.CountByType(Arg.Any<KanaType>()).Returns((byte) _hiraganas.Count());
 
@@ -107,7 +107,7 @@ namespace KanaQuiz.Tests.Services
         public void CreateKatakanaQuiz_Test(byte nbAnwsers)
         {
             // Arrange
-            var kanaRepository = Substitute.For<IRepository<Kana>>();
+            var kanaRepository = Substitute.For<IKanaRepository>();
             kanaRepository.GetAllByType(Arg.Any<KanaType>()).Returns(_katakana);
             kanaRepository.CountByType(Arg.Any<KanaType>()).Returns((byte) _katakana.Count());
 
@@ -127,7 +127,7 @@ namespace KanaQuiz.Tests.Services
         public void CreateKatakanaQuiz_OutOfRange_Test(byte nbAnwsers)
         {
             // Arrange
-            var kanaRepository = Substitute.For<IRepository<Kana>>();
+            var kanaRepository = Substitute.For<IKanaRepository>();
             kanaRepository.GetAllByType(Arg.Any<KanaType>()).Returns(_katakana);
             kanaRepository.CountByType(Arg.Any<KanaType>()).Returns((byte) _katakana.Count());
 

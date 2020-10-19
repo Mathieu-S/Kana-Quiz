@@ -7,12 +7,18 @@ namespace KanaQuiz.Infrastructure
     {
         public DbSet<Kana> Kanas { get; set; }
 
+        public KanaQuizContext()
+        {
+        }
+
         public KanaQuizContext(DbContextOptions options) : base(options)
         {
         }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            //=> optionsBuilder.UseNpgsql("Host=postgre;Database=KanaQuiz;Username=postgres;Password=admin");
+        //{
+        //    optionsBuilder.UseNpgsql("Host=localhost;Database=KanaQuiz;Username=postgres;Password=admin");
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

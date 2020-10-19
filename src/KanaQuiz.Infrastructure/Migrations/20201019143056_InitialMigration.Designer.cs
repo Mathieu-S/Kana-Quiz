@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace KanaQuiz.Infrastructure.Migrations
 {
     [DbContext(typeof(KanaQuizContext))]
-    [Migration("20201013233027_InitialMigration")]
+    [Migration("20201019143056_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -17,7 +17,7 @@ namespace KanaQuiz.Infrastructure.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
-                .HasAnnotation("ProductVersion", "3.1.9")
+                .HasAnnotation("ProductVersion", "3.1.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             modelBuilder.Entity("KanaQuiz.Core.Models.Kana", b =>
@@ -27,13 +27,15 @@ namespace KanaQuiz.Infrastructure.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("Romanji")
-                        .HasColumnType("text");
+                        .HasColumnType("character varying(255)")
+                        .HasMaxLength(255);
 
                     b.Property<int>("Type")
                         .HasColumnType("integer");
 
                     b.Property<string>("Value")
-                        .HasColumnType("text");
+                        .HasColumnType("character varying(255)")
+                        .HasMaxLength(255);
 
                     b.HasKey("Id");
 

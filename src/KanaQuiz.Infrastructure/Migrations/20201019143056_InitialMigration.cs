@@ -11,9 +11,9 @@ namespace KanaQuiz.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false),
-                    Value = table.Column<string>(nullable: true),
+                    Value = table.Column<string>(maxLength: 255, nullable: true),
                     Type = table.Column<int>(nullable: false),
-                    Romanji = table.Column<string>(nullable: true)
+                    Romanji = table.Column<string>(maxLength: 255, nullable: true)
                 },
                 constraints: table =>
                 {

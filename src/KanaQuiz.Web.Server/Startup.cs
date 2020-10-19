@@ -37,7 +37,6 @@ namespace KanaQuiz.Web.Server
             {
                 services.AddDbContext<KanaQuizContext>(option => option.UseNpgsql(Environment.GetEnvironmentVariable("KANAQUIZ_DB")));
             }
-            
 
             // Repositoies
             services.AddScoped<IKanaRepository, KanaRepository>();

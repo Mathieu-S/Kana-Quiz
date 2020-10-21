@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using KanaQuiz.Core.Exceptions;
 using KanaQuiz.Core.Models;
 using KanaQuiz.Core.Repositories;
 using KanaQuiz.Core.Services;
@@ -97,7 +97,7 @@ namespace KanaQuiz.Tests.Services
             var quizFactory = new QuizFactory(kanaRepository);
 
             // Assert
-            Assert.Throws<ArgumentException>(() => quizFactory.CreateHiraganaQuiz(nbAnwsers));
+            Assert.Throws<KanaQuizException>(() => quizFactory.CreateHiraganaQuiz(nbAnwsers));
         }
 
         [Theory]
@@ -135,7 +135,7 @@ namespace KanaQuiz.Tests.Services
             var quizFactory = new QuizFactory(kanaRepository);
 
             // Assert
-            Assert.Throws<ArgumentException>(() => quizFactory.CreateKatakanaQuiz(nbAnwsers));
+            Assert.Throws<KanaQuizException>(() => quizFactory.CreateKatakanaQuiz(nbAnwsers));
         }
     }
 }

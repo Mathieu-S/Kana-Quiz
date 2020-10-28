@@ -4,8 +4,8 @@ import { Page } from "../utils";
 class HomePage implements Page {
   Name = "Home";
   public OnInit(): void {
-    tippy("#blop", {
-      content: "My tooltip!",
+    tippy("#tippy-hello", {
+      content: "Hello",
     });
   }
 }

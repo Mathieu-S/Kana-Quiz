@@ -1,4 +1,6 @@
 ﻿@inherits LayoutComponentBase
+@inject IJSRuntime JsRuntime
+@inject NavigationManager NavigationManager
 
 <header>
     <h1>Kana-Quiz</h1>
@@ -16,3 +18,18 @@
 <footer>
     KanaQuiz Version 0.1.0
 </footer>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await SendActualRouteToJs();
+    }
+
+    private async Task SendActualRouteToJs()
+    {
+        var rawRoute = new Uri(NavigationManager.Uri);
+        var route = rawRoute.GetLeftPart(UriPartial.Path).Substring(NavigationManager.BaseUri.Length);
+        
+        await JsRuntime.InvokeVoidAsync("KanaQuizLibs.RouteHandler", route);
+    }
+}

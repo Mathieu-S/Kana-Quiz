@@ -5,6 +5,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = (env = {}) => ({
   mode: env.prod ? "production" : "development",
@@ -14,9 +15,10 @@ module.exports = (env = {}) => ({
   },
   output: {
     path: path.resolve(__dirname, "../wwwroot"),
-    filename: "js/[name].js",
-    chunkFilename: "js/[name].js",
+    filename: "js/[name].[hash].js",
+    chunkFilename: "js/[name].[hash].js",
     publicPath: "/",
+    library: 'KanaQuizLibs'
   },
   module: {
     rules: [
@@ -38,11 +40,12 @@ module.exports = (env = {}) => ({
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "./public/index.html"),
     }),
     new MiniCssExtractPlugin({
-      filename: "css/[name].css",
+      filename: "css/[name].[hash].css",
     }),
     new CopyPlugin({
       patterns: [
@@ -56,6 +59,9 @@ module.exports = (env = {}) => ({
       ],
     }),
   ],
+  resolve: {
+    extensions: [".ts", ".js"]
+  },
   optimization: {
     minimize: true,
     minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin()],

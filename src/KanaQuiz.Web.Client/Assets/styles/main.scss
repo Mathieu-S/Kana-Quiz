@@ -1,8 +1,9 @@
 ﻿/*Dependencies*/
 @import "~modern-normalize";
+@import "~tippy.js/dist/tippy.css";
 
 /*Components, utilities and themes*/
-@import "utils/layout.scss";
+@import "utils/layout";
 
 header {
     h1 {

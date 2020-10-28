@@ -1,6 +1,6 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM node:12.19-alpine AS assets
+FROM node:14.15-alpine AS assets
 WORKDIR /assets
 COPY ["src/KanaQuiz.Web.Client/Assets", "src"]
 WORKDIR /assets/src

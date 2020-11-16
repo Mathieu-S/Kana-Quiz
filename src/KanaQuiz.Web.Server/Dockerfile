@@ -7,7 +7,7 @@ WORKDIR /assets/src
 RUN npm i
 RUN npm run build
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0-alpine AS build
 WORKDIR /src
 COPY ["src/KanaQuiz.Web.Server/", "KanaQuiz.Web.Server/"]
 COPY ["src/KanaQuiz.Web.Client/", "KanaQuiz.Web.Client/"]
@@ -18,7 +18,7 @@ RUN dotnet restore "KanaQuiz.Web.Server/KanaQuiz.Web.Server.csproj"
 WORKDIR /src/KanaQuiz.Web.Server
 RUN dotnet publish "KanaQuiz.Web.Server.csproj" -c Release -o /app/build
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-alpine AS final
+FROM mcr.microsoft.com/dotnet/aspnet:5.0-alpine AS final
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
